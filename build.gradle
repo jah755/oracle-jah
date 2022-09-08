@@ -1,0 +1,28 @@
+//Gradle is a build tool with some efficient features compared to Maven and ant build tools.
+
+/*Plugin is used to configure the project and extend project's capabilities based on the plugins
+* Here in our example we are using application plugin to specify the main class of our java application and
+* org.springframework.boot version 2.6.7 is used to ensure that project will be using the features/capabilities
+* of springframework.boot available in version 2.6.7*/
+plugins {
+    id "application" // Apply plugin for Java Application
+    id "org.springframework.boot" version "2.6.7"
+}
+/*Defining mavenCentral repository explicitly. Gradle looks for the external dependencies in this repository and
+* download/adds then to our classpath. */
+repositories {
+    mavenCentral()
+}
+/*Script to add/download external dependencies required by our project that are stored in repositories
+like Maven central.*/
+dependencies {
+    implementation(
+        // Spring Boot Web Starter - Will run a web server on default port 8080
+        "org.springframework.boot:spring-boot-starter-web:2.6.7"
+    )
+}
+/*application is the mandatory configuration for the plugin to specify the main class i.e. entry point of
+java application.*/
+application {
+    mainClass = "dk.kmd.cnap.examples.spring.boot.simple.rest.service.SpringBootSimpleRestApplication"
+}
